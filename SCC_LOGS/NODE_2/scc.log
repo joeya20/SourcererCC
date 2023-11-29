@@ -1,0 +1,47 @@
+2023-10-16 11:06:27,209 INFO c.m.i.SearchManager [main] user.dir is: /home/joey/SourcererCC
+2023-10-16 11:06:27,209 INFO c.m.i.SearchManager [main] root dir is:/home/joey/SourcererCC/clone-detector/
+2023-10-16 11:06:27,209 INFO c.m.i.SearchManager [main] reading Q values from properties file
+2023-10-16 11:06:27,209 DEBUG c.m.i.SearchManager [main] propertiesPath: /home/joey/SourcererCC/clone-detector/NODE_2/sourcerer-cc.properties
+2023-10-16 11:06:27,210 DEBUG c.m.i.SearchManager [main] Query path:/home/joey/SourcererCC/clone-detector/NODE_2/query
+2023-10-16 11:06:27,210 INFO c.m.i.SearchManager [main] shardSegments String is : 65,100,300,500000
+2023-10-16 11:06:27,211 INFO c.m.m.Shard [main] shard Shard [id=1, minBagSizeToIndex=1, maxBagSizeToIndex=81] created
+2023-10-16 11:06:27,211 INFO c.m.m.Shard [main] shard Shard [id=2, minBagSizeToIndex=53, maxBagSizeToIndex=125] created
+2023-10-16 11:06:27,211 INFO c.m.m.Shard [main] shard Shard [id=3, minBagSizeToIndex=81, maxBagSizeToIndex=375] created
+2023-10-16 11:06:27,211 INFO c.m.m.Shard [main] shard Shard [id=4, minBagSizeToIndex=241, maxBagSizeToIndex=625000] created
+2023-10-16 11:06:27,211 INFO c.m.m.Shard [main] shard Shard [id=5, minBagSizeToIndex=400001, maxBagSizeToIndex=625000] created
+2023-10-16 11:06:27,211 DEBUG c.m.i.SearchManager [main] Number of shards created: 5
+2023-10-16 11:06:27,211 INFO c.m.i.SearchManager [main] action: search
+threshold: 8
+ QLQ_THREADS: 4 QBQ_THREADS: 4 QCQ_THREADS: 4 VCQ_THREADS: 16 RCQ_THREADS: 4
+
+2023-10-16 11:06:27,212 DEBUG c.m.i.SearchManager [main] NODE_2 MAX_TOKENS=500000 MIN_TOKENS=1
+2023-10-16 11:06:27,213 INFO c.m.u.Util [main] creating directory: /home/joey/SourcererCC/clone-detector/NODE_2/output8.0
+2023-10-16 11:06:27,214 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/fwdindex/1
+2023-10-16 11:06:27,246 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/index/1
+2023-10-16 11:06:27,249 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/fwdindex/2
+2023-10-16 11:06:27,249 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/index/2
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/fwdindex/3
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/index/3
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/fwdindex/4
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/index/4
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/fwdindex/5
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/index/5
+2023-10-16 11:06:27,250 INFO c.m.i.CodeSearcher [main] index directory: /home/joey/SourcererCC/clone-detector/gtpmindex
+2023-10-16 11:06:27,250 INFO c.m.i.SearchManager [main] NODE_2 Starting to search
+2023-10-16 11:06:27,251 ERROR c.m.i.SearchManager [main] NODE_2, /home/joey/SourcererCC/clone-detector/NODE_2/output8.0/recovery.txt not found
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] lines to ignore in query file: 0
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] Directory: query
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] shutting down QLQ, 1697468787251
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] shutting down QBQ, 1697468787251
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] shutting down QCQ, 1697468787251
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] shutting down VCQ, 1697468787251
+2023-10-16 11:06:27,251 INFO c.m.i.SearchManager [main] shutting down RCQ, 1697468787251
+2023-10-16 11:06:27,251 DEBUG c.m.i.SearchManager [main] signing off NODE_2
+2023-10-16 11:06:27,251 DEBUG c.m.i.SearchManager [main] lock obtained? sun.nio.ch.FileLockImpl[0:9223372036854775807 exclusive valid]
+2023-10-16 11:06:27,258 INFO c.m.i.SearchManager [main] Total run Time: 49459 micros
+2023-10-16 11:06:27,258 INFO c.m.i.SearchManager [main] number of clone pairs detected: 0
+2023-10-16 11:06:27,258 DEBUG c.m.i.SearchManager [main] /home/joey/SourcererCC/clone-detector/run_metadata.scc file exists, reading it to get the run metadata
+2023-10-16 11:06:27,258 DEBUG c.m.i.SearchManager [main] last run count was: 5
+2023-10-16 11:06:27,258 INFO c.m.u.Util [main] creating directory: /home/joey/SourcererCC/clone-detector/backup_output/5/NODE_2
+2023-10-16 11:06:27,258 DEBUG c.m.i.SearchManager [main] moving /home/joey/SourcererCC/clone-detector/NODE_2/output8.0 to /home/joey/SourcererCC/clone-detector/backup_output/5/NODE_2
+2023-10-16 11:06:27,260 INFO c.m.i.SearchManager [main] completed on NODE_2

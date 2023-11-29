@@ -90,7 +90,7 @@ Inside [clone-detector/](https://github.com/Mondego/SourcererCC/tree/master/clon
 
 ```
 # Ignore all files outside these bounds
-MIN_TOKENS=65
+MIN_TOKENS=1
 MAX_TOKENS=500000
 ```
 where you can set an upper and lower bound for file clone detection. You can dismiss the other parameters for now.
