@@ -14,3 +14,9 @@ Steps to run the WebApp:
 		EXPORT FLASK_ENV=development
 		flask run
 
+Added steps:
+1. build clone-detector: (see clone-detector/README.md)
+cd clone-detector
+ant clean cdi
+
+2. MUST be in clone-detector when running controller.py
