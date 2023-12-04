@@ -9,7 +9,7 @@ echo "Starting $0 [$(date)]"
 # fi
 
 # clear existing metadata
-trash-put -r logs/ bookkeeping_projs/ files_stats/ files_tokens/ query_1.file blocks.file results.pair
+trash-put -r logs/ bookkeeping_projs/ files_stats/ files_tokens/ query_1.file blocks.file results.pair SCC_LOGS/
 
 # tokenize input
 # assuming zip input
