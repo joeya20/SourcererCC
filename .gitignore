@@ -51,3 +51,13 @@ fwdindex/*
 index_nofilter/*
 output*
 /bin/
+
+# temp directories
+bookkeeping_projs/
+files_stats/
+files_tokens/
+query_1.file
+blocks.file
+results.pair
+results.pairs
+logs/
