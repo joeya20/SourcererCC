@@ -55,10 +55,13 @@ output*
 # temp directories
 bookkeeping_projs/
 files_stats/
+file_block_stats/
 files_tokens/
+blocks_tokens/
 query_*.file
 blocks.file
 results.pair
 results.pairs
 logs/
 SCC_LOGS/
+**/__pycache__

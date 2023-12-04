@@ -9,12 +9,12 @@ echo "Starting $0 [$(date)]"
 # fi
 
 # clear existing metadata
-trash-put -r logs/ bookkeeping_projs/ files_stats/ files_tokens/ query_*.file blocks.file results.pair SCC_LOGS/
+trash-put -r logs/ file_block_stats/ blocks_tokens/ bookkeeping_projs/ results.pairs blocks.file
 
 # tokenize input
 # assuming zip input
-python tokenizers/file-level/tokenizer.py zip
-cat files_tokens/* > blocks.file
+python tokenizers/block-level/tokenizer.py zipblocks
+cat blocks_tokens/* > blocks.file
 cp blocks.file clone-detector/input/dataset/
 
 # run clone detector

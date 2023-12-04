@@ -1,6 +1,7 @@
 Dependencies:
 javalang==0.13.0
 six==1.16.0
+pyslang==4.0.0
 
 The application runs on python 3.7. Please verify the version and the following changes in the configuration files:
 WebApp:
