@@ -56,7 +56,7 @@ output*
 bookkeeping_projs/
 files_stats/
 files_tokens/
-query_1.file
+query_*.file
 blocks.file
 results.pair
 results.pairs
