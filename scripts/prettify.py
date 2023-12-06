@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# https://github.com/vvlevchenko/SourcererCC/blob/master/prettify_results.py
+
 """This module print results of SourcererCC in nicer way when ran.
 Other functions are used to transform SourcererCC output to json format for
 further processing."""

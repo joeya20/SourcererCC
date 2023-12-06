@@ -1,4 +1,4 @@
-#!/home/joey/SourcererCC/env/bin/python3.7
+#!/home/joey/SourcererCC/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

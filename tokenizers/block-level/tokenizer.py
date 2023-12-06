@@ -80,8 +80,7 @@ def read_config():
     PATH_logs = config.get("Folders/Files", "PATH_logs")
 
     # Reading Language settings
-    separators = "; . [ ] ( ) ~ ! - + & * / % < > ^ | ? { } = # , \" \\ : $ ' ` @ begin end"
-    # config.get('Language', 'separators').strip('"').split(' ')
+    separators = config.get('Language', 'separators').strip('"').split(' ')
     comment_inline = re.escape(config.get("Language", "comment_inline"))
     comment_inline_pattern = comment_inline + ".*?$"
     comment_open_tag = re.escape(config.get("Language", "comment_open_tag"))
@@ -207,8 +206,8 @@ def tokenize_blocks(
     (block_linenos, blocks, block_names) = extractVerilogBlock.getBlocks(file_string)
 
     if len(block_linenos) == 0:
-        logging.warning("Could not extract blocks from file %s." % (file_path))
-        logging.warning("Returning None on tokenize_blocks for file %s." % (file_path))
+        # logging.warning("Could not extract blocks from file %s." % (file_path))
+        logging.warning(f"Returning None on tokenize_blocks for file {file_path}.")
         return (None, None, None)
     else:
         try:
@@ -702,15 +701,7 @@ def process_tgz_ball(
 
                 if myfile is None:
                     logging.warning(
-                        "Unable to open file (2) <"
-                        + proj_id
-                        + ","
-                        + str(file_id)
-                        + ","
-                        + os.path.join(tar_file, file_path)
-                        + "> (process "
-                        + str(process_num)
-                        + ")"
+                        f"Unable to open file (2) <{proj_id},{str(file_id)},{os.path.join(tar_file, file_path)}> (process {str(process_num)})"
                     )
                     continue
                 f_time = dt.datetime.now()
@@ -806,11 +797,7 @@ def process_zip_ball(
 
                 if my_zip_file is None:
                     logging.warning(
-                        "Unable to open file (2) <"
-                        + os.path.join(proj_path, file)
-                        + "> (process "
-                        + str(process_num)
-                        + ")"
+                        f"Unable to open file (2) <{os.path.join(proj_path, file)}> (process {str(process_num)})"
                     )
                     continue
                 try:
@@ -846,14 +833,7 @@ def process_zip_ball(
     #                                 zip_time, file_time, string_time, tokens_time, write_time, hash_time, regex_time)
 
     except Exception as e:
-        logging.warning(
-            "Unable to open zip on <"
-            + proj_path
-            + "> (process "
-            + str(process_num)
-            + ")"
-        )
-        logging.warning(e)
+        logging.warning(f"Unable to open zip on <{proj_path}> (process {str(process_num)}): {e}")
         return
     logging.info("Successfully ran process_zip_ball " + zip_file)
     return (
