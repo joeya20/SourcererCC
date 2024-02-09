@@ -21,3 +21,9 @@ cd clone-detector
 ant clean cdi
 
 2. MUST be in clone-detector when running controller.py
+
+
+help:
+fc:  find openpiton/piton/design/chip/tile/ariane/src/* -name '*.sv' | wc -l
+wc: find openpiton/piton/design/chip/tile/ariane/src/* -name '*.sv'  | xargs wc -l
+zip:  find openpiton/piton/design/chip/tile/ariane/src/* -name '*.sv' | zip hd22.zip -@

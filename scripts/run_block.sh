@@ -22,7 +22,7 @@ cd clone-detector || exit
 python controller.py
 
 # gather results
-cd ..
-cat clone-detector/NODE_*/output8.0/query_* > results.pairs
+# cd ..
+# cat clone-detector/NODE_*/output8.0/query_* > results.pairs
 
 echo "Finished SourcererCC [$(date)]"

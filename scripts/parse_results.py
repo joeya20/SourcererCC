@@ -32,7 +32,7 @@ def parse_clones():
     print(f'finished reading {res_filepath}...')
 
     print('writing clones.csv...')
-    with open('clones.csv', 'w') as csvfile:
+    with open('output/clones.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         # writing the fields
         csvwriter.writerow(fields)
@@ -62,7 +62,7 @@ def parse_block_stats():
         print(f'finished reading {i_filepath}...')
 
     print('writing stats.csv...')
-    with open('stats.csv', 'w') as csvfile:
+    with open('output/stats.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         # writing the fields
         csvwriter.writerow(fields)
