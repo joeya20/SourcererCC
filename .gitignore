@@ -67,3 +67,4 @@ SCC_LOGS/
 **/__pycache__
 
 *.zip
+opentitan_buggy/
