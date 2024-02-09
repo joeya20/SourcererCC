@@ -65,3 +65,5 @@ results.pairs
 logs/
 SCC_LOGS/
 **/__pycache__
+
+*.zip
