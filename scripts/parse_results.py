@@ -3,6 +3,13 @@ import pathlib
 import csv
 
 
+def get_snippet(filepath, snippet_start, snippet_end):
+    print(filepath[str(filepath).find('.zip/')+5:])
+    with open(filepath[str(filepath).find('.zip/')+5:]) as src:
+        lines = src.readlines()
+        return "\n".join(lines[int(snippet_start)-1:int(snippet_end)]).strip()
+
+
 def get_block_id_from_line(line: str):
     split_line = line.strip().split(',')
     assert len(split_line) == 4
@@ -44,7 +51,7 @@ def parse_clones():
 def parse_block_stats():
     stats_dir = pathlib.Path(os.getcwd(), 'file_block_stats')
 
-    fields = ['filepath', 'block_id', 'block_begin', 'block_end']
+    fields = ['filepath', 'block_id', 'block_begin', 'block_end', 'snippet']
     rows = []
 
     # parse file stats
@@ -58,7 +65,8 @@ def parse_block_stats():
                     last_filepath = get_filepath_from_line(line)
                 elif line.startswith('b'):
                     (block_id, block_begin, block_end) = get_block_lineno_from_line(line)
-                    rows.append([last_filepath, block_id, block_begin, block_end])
+                    snippet = get_snippet(last_filepath, block_begin, block_end)
+                    rows.append([last_filepath, block_id, block_begin, block_end, snippet])
         print(f'finished reading {i_filepath}...')
 
     print('writing stats.csv...')
@@ -72,5 +80,7 @@ def parse_block_stats():
 
 
 if __name__ == "__main__":
+    if not os.path.isdir('output'):
+        os.mkdir('output')
     parse_block_stats()
     parse_clones()
