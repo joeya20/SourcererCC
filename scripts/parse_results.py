@@ -4,7 +4,6 @@ import csv
 
 
 def get_snippet(filepath, snippet_start, snippet_end):
-    print(filepath[str(filepath).find('.zip/')+5:])
     with open(filepath[str(filepath).find('.zip/')+5:]) as src:
         lines = src.readlines()
         return "\n".join(lines[int(snippet_start)-1:int(snippet_end)]).strip()

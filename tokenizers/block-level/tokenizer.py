@@ -11,6 +11,7 @@ import datetime as dt
 import zipfile
 import extractVerilogBlock
 import io
+import argparse
 
 from configparser import ConfigParser
 
@@ -41,13 +42,16 @@ file_extensions = ".none"
 
 file_count = 0
 
+target = ''
+
 
 def read_config():
     global N_PROCESSES, PROJECTS_BATCH, FILE_projects_list, FILE_priority_projects
     global PATH_stats_file_folder, PATH_bookkeeping_proj_folder, PATH_tokens_file_folder, PATH_logs
     global separators, comment_inline, comment_inline_pattern, comment_open_tag, comment_close_tag, comment_open_close_pattern
     global file_extensions
-
+    global target
+ 
     global init_file_id
     global init_proj_id
 
@@ -88,6 +92,8 @@ def read_config():
     comment_open_close_pattern = comment_open_tag + ".*?" + comment_close_tag
     file_extensions = config.get("Language", "File_extensions").split(" ")
 
+    target = config.get("Language", "target")
+    
     # Reading config settings
     init_file_id = config.getint("Config", "init_file_id")
     init_proj_id = config.getint("Config", "init_proj_id")
@@ -202,12 +208,14 @@ def tokenize_blocks(
     #   (block_linenos, blocks) = extractPythonFunction.getFunctions(file_string, logging, file_path)
     # if '.java' in file_extensions:
     #   (block_linenos, blocks, block_names) = extractJavaFunction.getFunctions(file_string, logging, file_path, separators, comment_inline_pattern)
-
-    (block_linenos, blocks, block_names) = extractVerilogBlock.getBlocks(file_string)
+    if target in ('IfStmt', 'SeqBlock', 'HierInst', 'AssignExpr', 'ContAssign'):
+        (block_linenos, blocks, block_names) = extractVerilogBlock.getBlocks(file_string, target)
+    else:
+        raise ValueError(f"Invalid Target: {target}")
 
     if len(block_linenos) == 0:
         # logging.warning("Could not extract blocks from file %s." % (file_path))
-        logging.warning(f"Returning None on tokenize_blocks for file {file_path}.")
+        logging.info(f"No blocks found in {file_path}.")
         return (None, None, None)
     else:
         try:
@@ -1206,8 +1214,16 @@ def active_process_count(processes):
     return count
 
 
-if __name__ == "__main__":
+def main():
+    # argparser = argparse.ArgumentParser(
+    #     prog='Controller',
+    #     description='Clone Detector Controller')
+    # argparser.add_argument('target', choices=['IfStmt', 'SeqBlock', 'AssignExpr', 'HierInst'])
+    # argparser.add_argument('-f', 'format', choices=['zipblocks', 'folderblocks'], default='folderblocks')
+    # args = argparser.parse_args()
+
     global project_format
+    # project_format = args.format
     project_format = sys.argv[
         1
     ]  # 'zipblocks' or 'folderblocks' (when want the blocks inside files)
@@ -1297,3 +1313,7 @@ if __name__ == "__main__":
         kill_child(processes, pid, n_files_processed)
     p_elapsed = dt.datetime.now() - p_start
     print("*** All done. %s files in %s" % (file_count, p_elapsed))
+
+
+if __name__ == "__main__":
+    main()

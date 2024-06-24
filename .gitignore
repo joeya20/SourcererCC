@@ -68,3 +68,5 @@ SCC_LOGS/
 
 *.zip
 opentitan_buggy/
+opentitan/
+env/

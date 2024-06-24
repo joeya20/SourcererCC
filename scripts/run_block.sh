@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "Starting $0 [$(date)]"
-
+SECONDS=0
 # clear existing metadata
-trash-put -r logs/ file_block_stats/ blocks_tokens/ bookkeeping_projs/ results.pairs blocks.file
+rm -r logs/ file_block_stats/ blocks_tokens/ bookkeeping_projs/ results.pairs blocks.file
 
 # tokenize input
 # assuming zip input
@@ -17,6 +17,9 @@ python controller.py
 
 # gather results
 cd ..
-cat clone-detector/NODE_*/output*.0/query_* > results.pairs
+cat clone-detector/NODE_*/output*/query_* > results.pairs
 
 echo "Finished SourcererCC [$(date)]"
+
+duration=$SECONDS
+echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."

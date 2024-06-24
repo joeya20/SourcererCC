@@ -1,2 +1,1 @@
-tests/hd23_p2.zip
-tests/bugs.zip
+tests/opentitan.zip

@@ -7,6 +7,7 @@ import subprocess
 import sys
 import os
 
+
 class ScriptControllerException(Exception):
     pass
 
@@ -33,14 +34,14 @@ class ScriptController(object):
         self.current_state = ScriptController.STATE_EXECUTE_1  # default state
         self.previous_run_state = self.load_previous_state()
 
-    def full_file_path(self,string):
-        return os.path.join(os.path.dirname(os.path.realpath(__file__)),string)
+    def full_file_path(self, string):
+        return os.path.join(os.path.dirname(os.path.realpath(__file__)), string)
 
-    def full_script_path(self,string,param=""):
+    def full_script_path(self, string, param=""):
         if len(param) == 0:
-            return os.path.join(os.path.dirname(os.path.realpath(__file__)),string)
+            return os.path.join(os.path.dirname(os.path.realpath(__file__)), string)
         else:
-            return os.path.join(os.path.dirname(os.path.realpath(__file__)),string)+" "+param
+            return os.path.join(os.path.dirname(os.path.realpath(__file__)), string)+" "+param
 
     def execute(self):
         # execute command
@@ -64,13 +65,13 @@ class ScriptController(object):
                     command = self.full_script_path("restore-gtpm.sh")
                     command_params = command.split()
                     returncode = self.run_command(
-                    command_params, self.full_file_path("Log_restore_gtpm.out"), self.full_file_path("Log_restore_gtpm.err"))
+                        command_params, self.full_file_path("Log_restore_gtpm.out"), self.full_file_path("Log_restore_gtpm.err"))
                 else:
                     # take backup of existing gtpmindex before starting init
                     command = self.full_script_path("backup-gtpm.sh")
                     command_params = command.split()
                     returncode = self.run_command(
-                    command_params, self.full_file_path("Log_backup_gtpm.out"), self.full_file_path("Log_backup_gtpm.err"))
+                        command_params, self.full_file_path("Log_backup_gtpm.out"), self.full_file_path("Log_backup_gtpm.err"))
                 # run the init step
                 command = self.full_script_path("runnodes.sh", "init 1")
                 command_params = command.split()
@@ -108,10 +109,11 @@ class ScriptController(object):
                             command = self.full_script_path("execute.sh", "{nodes}".format(
                                 nodes=self.params["num_nodes_search"]))
                             command_params = command.split()
-                            returncode = self.run_command(command_params,
-                                                          self.full_file_path("Log_execute_{nodes}.out".format(
-                                                              nodes=self.params["num_nodes_search"])),
-                                                          self.full_file_path("Log_execute_{nodes}.err".format(nodes=self.params["num_nodes_search"])))
+                            returncode = self.run_command(
+                                command_params,
+                                self.full_file_path("Log_execute_{nodes}.out".format(
+                                    nodes=self.params["num_nodes_search"])),
+                                self.full_file_path("Log_execute_{nodes}.err".format(nodes=self.params["num_nodes_search"])))
                         self.current_state += 1
                         if returncode == ScriptController.EXIT_SUCCESS:
                             self.flush_state()
@@ -123,7 +125,7 @@ class ScriptController(object):
                                 command_params = command.split()
                                 returncode = self.run_command(
                                     command_params, self.full_file_path("Log_search.out"), self.full_file_path("Log_search.err"))
-                            self.current_state = ScriptController.STATE_EXECUTE_1 # go back to EXE 1 state
+                            self.current_state = ScriptController.STATE_EXECUTE_1  # go back to EXE 1 state
                             if returncode == ScriptController.EXIT_SUCCESS:
                                 self.flush_state()
                                 print("SUCCESS: Search Completed on all nodes")
@@ -148,7 +150,7 @@ class ScriptController(object):
     def flush_state(self):
         print("current state: ", str(self.current_state))
         with open(self.script_meta_file_name, "w") as f:
-            print ("flushing current state", str(self.current_state))
+            print("flushing current state", str(self.current_state))
             f.write("{line}\n".format(line=self.current_state))
 
     def load_previous_state(self):
@@ -167,6 +169,7 @@ class ScriptController(object):
             p = subprocess.Popen(cmd, stdout=fo, stderr=fe, universal_newlines=True)
             p.communicate()
         return p.returncode
+
 
 if __name__ == '__main__':
     numnodes = 2
